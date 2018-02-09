@@ -1,6 +1,7 @@
 package com.exchange.negotiator.demonegotiator.service;
 
 import com.exchange.negotiator.demonegotiator.model.Stock;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,9 @@ public class NegotiatorServiceImpl implements NegotiatorService {
             StringBuilder baseUrl = new StringBuilder(path);
             URL url = new URL(baseUrl.append(stockId).toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            String userCredentials = "username:password";
+            String basicAuth = "Basic " + new String(Base64.encodeBase64(userCredentials.getBytes()));
+            conn.setRequestProperty ("Authorization", basicAuth);
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
             if (conn.getResponseCode() != 200) {
@@ -58,6 +62,9 @@ public class NegotiatorServiceImpl implements NegotiatorService {
             URL url = new URL(path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
+            String userCredentials = "username:password";
+            String basicAuth = "Basic " + new String(Base64.encodeBase64(userCredentials.getBytes()));
+            conn.setRequestProperty ("Authorization", basicAuth);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
             String input = "{\"stockId\":\"" + stock.getStockId() + "\",\"price\":\""+ stock.getPrice() +"\",\"companyName\":\""+stock.getCompanyName()+"\"}\n" +
@@ -91,6 +98,9 @@ public class NegotiatorServiceImpl implements NegotiatorService {
             URL url = new URL(path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
+            String userCredentials = "username:password";
+            String basicAuth = "Basic " + new String(Base64.encodeBase64(userCredentials.getBytes()));
+            conn.setRequestProperty ("Authorization", basicAuth);
             conn.setRequestMethod("PUT");
             conn.setRequestProperty("Content-Type", "application/json");
             String input = "{\"stockId\":\"" + stock.getStockId() + "\",\"price\":\""+ stock.getPrice() +"\",\"companyName\":\""+stock.getCompanyName()+"\"}\n" +
