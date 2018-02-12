@@ -1,5 +1,8 @@
 package com.exchange.negotiator.demonegotiator.model;
 
+import lombok.Data;
+
+@Data
 public class Stock {
 
     /**
@@ -16,29 +19,5 @@ public class Stock {
      * companyName
      */
     private String companyName;
-
-    public String getStockId() {
-        return stockId;
-    }
-
-    public void setStockId(String stockId) {
-        this.stockId = stockId;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
 
     }
