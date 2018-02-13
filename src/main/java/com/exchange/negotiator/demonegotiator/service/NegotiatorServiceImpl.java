@@ -115,8 +115,9 @@ public class NegotiatorServiceImpl implements NegotiatorService {
             conn.setRequestProperty ("Authorization", basicAuth);
             conn.setRequestMethod("PUT");
             conn.setRequestProperty("Content-Type", "application/json");
-            String input = "{\"stockId\":\"" + stock.getStockId() + "\",\"price\":\""+ stock.getPrice() +"\",\"companyName\":\""+stock.getCompanyName()+"\"}\n" +
-                    "\n";
+            /*String input = "{\"stockId\":\"" + stock.getStockId() + "\",\"price\":\""+ stock.getPrice() +"\",\"companyName\":\""+stock.getCompanyName()+"\"}\n" +
+                    "\n";*/
+            String input = mapper.writeValueAsString(stock);
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
