@@ -1,12 +1,13 @@
 package com.exchange.negotiator.demonegotiator.service;
 
 import com.exchange.negotiator.demonegotiator.model.Stock;
+import com.exchange.negotiator.demonegotiator.model.StockResponse;
 
 public interface NegotiatorService {
 
-    String getStock(String stockId);
+    Stock getStock(String stockId);
 
-    String createStock(Stock stock);
+    StockResponse createStock(Stock stock);
 
-    String updateStock(Stock stock);
+    Stock updateStock(Stock stock);
 }

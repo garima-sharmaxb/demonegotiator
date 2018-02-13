@@ -3,6 +3,8 @@ package com.exchange.negotiator.demonegotiator.model;
 import lombok.Data;
 
 @Data
+@lombok.Getter
+@lombok.Setter
 public class Stock {
 
     /**

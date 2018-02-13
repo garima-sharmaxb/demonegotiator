@@ -1,6 +1,7 @@
 package com.exchange.negotiator.demonegotiator.controller;
 
 import com.exchange.negotiator.demonegotiator.model.Stock;
+import com.exchange.negotiator.demonegotiator.model.StockResponse;
 import com.exchange.negotiator.demonegotiator.service.NegotiatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,20 +29,20 @@ public class NegotiatorControllerImpl implements NegotiatorController {
 
 
     @Override
-    public String getStock(@PathVariable("id") String stockId) {
+    public Stock getStock(@PathVariable("id") String stockId) {
         logger.info("Inside NegotiatorControllerImpl getStock method");
         return negotiatorService.getStock(stockId);
 
     }
 
     @Override
-    public String createStock(@RequestBody Stock stock) {
+    public StockResponse createStock(@RequestBody Stock stock) {
         logger.info("Inside NegotiatorControllerImpl createStock method");
         return negotiatorService.createStock(stock);
     }
 
     @Override
-    public String updateStock(@RequestBody Stock stock) {
+    public Stock updateStock(@RequestBody Stock stock) {
         logger.info("Inside NegotiatorControllerImpl updateStock method");
         return negotiatorService.updateStock(stock);
     }
