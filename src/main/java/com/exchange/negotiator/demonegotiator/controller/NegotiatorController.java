@@ -1,6 +1,7 @@
 package com.exchange.negotiator.demonegotiator.controller;
 
 import com.exchange.negotiator.demonegotiator.model.Stock;
+import com.exchange.negotiator.demonegotiator.model.StockResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,7 @@ public interface NegotiatorController {
      * @return Stock
      */
     @RequestMapping( value = "/stock/{id}" , method = RequestMethod.GET)
-    String getStock(String stockId);
+    Stock getStock(String stockId);
 
     /**
      * This method interacts with stock exchange server
@@ -24,7 +25,7 @@ public interface NegotiatorController {
      * @return status
      */
     @RequestMapping (value = "/stock" , method = RequestMethod.POST)
-    String createStock(@RequestBody Stock stock);
+    StockResponse createStock(@RequestBody Stock stock);
 
     /**
      * This method interacts with stock exchange server
@@ -33,7 +34,7 @@ public interface NegotiatorController {
      * @return Stock
      */
     @RequestMapping (value = "/stock" , method = RequestMethod.PUT)
-    String updateStock(@RequestBody Stock stock);
+    Stock updateStock(@RequestBody Stock stock);
 
 
 }
